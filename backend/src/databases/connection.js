@@ -1,8 +1,9 @@
 const mongoose = require('mongoose')
 
-async function connection() {
+const connectDatabase = async () => {
     try {
-        await mongoose.connect('mongodb+srv://alvarohenriquegomesdasilva:@pets.tvhc3aq.mongodb.net/?retryWrites=true&w=majority')
+        const password = encodeURIComponent('Estudar@2024');
+        await mongoose.connect(`mongodb+srv://root:${password}@pets.tvhc3aq.mongodb.net/?retryWrites=true&w=majority`)
         console.log('Connectado com sucesso!')
     } catch (error) {
         console.log(error)
@@ -10,7 +11,7 @@ async function connection() {
     
 }
 
-connection()
+connectDatabase()
     .catch((error) => console.log(error))
 
 module.exports = mongoose
